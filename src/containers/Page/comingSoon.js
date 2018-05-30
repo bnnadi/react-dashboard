@@ -18,8 +18,8 @@ export default class extends Component {
   };
   render() {
     const options = {
-      endDate: '03/01/2019 10:55 AM',
-      prefix: 'until my birthday!'
+      endDate: '06/30/2018 12:00 AM',
+      prefix: ''
     };
     const { email, disabled } = this.state;
     const onChange = event => {
@@ -35,7 +35,7 @@ export default class extends Component {
             ready in approximately:
           </h3>
           <Countdown options={options} />
-          <h3>
+          {/* <h3>
             If you would like to be notified when the app is ready, you can
             subscribe to our e-mail list.
           </h3>
@@ -45,7 +45,7 @@ export default class extends Component {
           <Input value={email} onChange={onChange} />
           <Button type="button" disabled={disabled}>
             SUBSCRIBE
-          </Button>
+          </Button> */}
         </div>
 
         <div className="nn404Artwork">

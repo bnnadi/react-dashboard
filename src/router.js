@@ -24,11 +24,11 @@ const PublicRoutes = ({ history, isLoggedIn }) => {
     return (
         <ConnectedRouter history={history}>
             <div>
-                {/* <Route
+                <Route
                   exact
                   path={'/'}
                   component={asyncComponent(() => import('./containers/Page/comingSoon'))}
-                /> */}
+                />
                 <Route
                   exact
                   path={'/signin'}
