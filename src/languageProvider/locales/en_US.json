@@ -638,5 +638,7 @@
   "topbar.logout": "Logout",
   "topbar.viewAll": "View All",
   "topbar.viewCart": "View Cart",
-  "topbar.totalPrice": "Total Price"
+  "topbar.totalPrice": "Total Price",
+  "comingSoon.title": "Hey! Thank you for checking out our app.",
+  "comingSoon.subTitle": "It’s not quite ready yet, but we are working hard and it will be ready in approximately:"
 }
