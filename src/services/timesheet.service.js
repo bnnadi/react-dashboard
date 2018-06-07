@@ -4,6 +4,7 @@ import { getToken } from '../helpers/utility';
 export {
     get,
     getAll,
+    del
 };
 
 function get(id) {
@@ -36,5 +37,5 @@ function del(id) {
             'x-access-token': getToken().get('token')
           },
     };
-    return fetch(apiUrl+'timesheets/'+id+'.json').then(response => response.json())
+    return fetch(apiUrl+'timesheets/'+id+'.json', requestOptions).then(response => response.json())
 };

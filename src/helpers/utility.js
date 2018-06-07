@@ -7,7 +7,7 @@ export function clearToken() {
 export function getToken() {
     try {
         const token = localStorage.getItem('token');
-        return new Map(token)
+        return new Map({token})
     } catch(e) {
         clearUser();
         return new Map();
@@ -22,7 +22,7 @@ export function clearUser() {
 export function getUser() {
     try {
         const user = localStorage.getItem('user');
-        return new Map(user)
+        return new Map({user})
     } catch(e) {
         clearUser();
         return new Map();

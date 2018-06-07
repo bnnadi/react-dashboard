@@ -4,6 +4,8 @@ import { getToken } from '../helpers/utility';
 export {
     get,
     getAll,
+    update,
+    generateBarcode,
     del
 }
 
@@ -48,7 +50,7 @@ function generateBarcode(id) {
             'x-access-token': getToken().get('token')
           },
     };
-    return fetch(apiUrl+'product/'+id+'/generateBarcode').then(response => response.json())
+    return fetch(apiUrl+'product/'+id+'/generateBarcode', requestOptions).then(response => response.json())
 };
 
 function del(id) {
@@ -59,5 +61,5 @@ function del(id) {
             'x-access-token': getToken().get('token')
           },
     };
-    return fetch(apiUrl+'product/'+id+'.json').then(response => response.json())
+    return fetch(apiUrl+'product/'+id+'.json', requestOptions).then(response => response.json())
 };
