@@ -28,9 +28,6 @@ class Profile extends Component {
         const styleButton = { background: sidebarTheme.buttonColor };
         return (
             <LayoutWrapper>
-                <PageHeader>
-                <IntlMessages id="topbar.profile" />
-                </PageHeader>
                 <Tabs className="nnTableDisplayTab">
                     {infos.map(info => (
                         <TabPane tab={info.title} key={info.value}>

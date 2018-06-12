@@ -59,7 +59,7 @@ function addCustomer() {
       method: 'POST',
       headers: { 'x-access-token': getToken().get('token'), 'Content-Type': 'application/json' }
     };
-    return fetch(api.url + 'customer/'+id+'/addAddress.json', requestOptions).then(response => response.json())
+    return fetch(api.url + `customer/${id}/addAddress.json`, requestOptions).then(response => response.json())
   };
 
   function addAddress(id) {
@@ -67,7 +67,7 @@ function addCustomer() {
       method: 'POST',
       headers: { 'x-access-token': getToken().get('token'), 'Content-Type': 'application/json' }
     };
-    return fetch(api.url + 'customer/'+id+'/addAddress.json', requestOptions).then(response => response.json())
+    return fetch(api.url + `customer/${id}/addAddress.json`, requestOptions).then(response => response.json())
   };
 
   function updatePhone(id) {
@@ -75,7 +75,7 @@ function addCustomer() {
       method: 'PUT',
       headers: { 'x-access-token': getToken().get('token'), 'Content-Type': 'application/json' }
     };
-    return fetch(api.url + 'customer/'+id+'/updateAddress.json', requestOptions).then(response => response.json())
+    return fetch(api.url + `customer/${id}/updateAddress.json`, requestOptions).then(response => response.json())
   };
 
   function updateAddress(id) {
@@ -83,7 +83,7 @@ function addCustomer() {
       method: 'PUT',
       headers: { 'x-access-token': getToken().get('token'), 'Content-Type': 'application/json' }
     };
-    return fetch(api.url + 'customer/'+id+'/updateAddress.json', requestOptions).then(response => response.json())
+    return fetch(api.url + `customer/${id}/updateAddress.json`, requestOptions).then(response => response.json())
   };
 
   function removePhone(id) {
@@ -91,7 +91,7 @@ function addCustomer() {
       method: 'PUT',
       headers: { 'x-access-token': getToken().get('token'), 'Content-Type': 'application/json' }
     };
-    return fetch(api.url + 'customer/'+id+'/removeAddress.json', requestOptions).then(response => response.json())
+    return fetch(api.url + `customer/${id}/removeAddress.json`, requestOptions).then(response => response.json())
   };
 
   function removeAddress(id) {
@@ -99,7 +99,7 @@ function addCustomer() {
       method: 'PUT',
       headers: { 'x-access-token': getToken().get('token'), 'Content-Type': 'application/json' }
     };
-    return fetch(api.url + 'customer/'+id+'/removeAddress.json', requestOptions).then(response => response.json())
+    return fetch(api.url + `customer/${id}/removeAddress.json`, requestOptions).then(response => response.json())
   };
 
   function deleteCustomer(id) {
@@ -107,5 +107,5 @@ function addCustomer() {
       method: 'DELETE',
       headers: getToken()
     };
-    return fetch(api.url + 'customer/'+id+'.json', requestOptions).then(response => response.json())
+    return fetch(api.url + `customer/${id}.json`, requestOptions).then(response => response.json())
   };

@@ -37,5 +37,5 @@ function del(id) {
             'x-access-token': getToken().get('token')
           },
     };
-    return fetch(apiUrl+'timesheets/'+id+'.json', requestOptions).then(response => response.json())
+    return fetch(apiUrl+`timesheets/${id}.json`, requestOptions).then(response => response.json())
 };

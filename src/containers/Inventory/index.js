@@ -4,7 +4,7 @@ import productAction from '../../redux/products/actions';
 import Tabs, { TabPane } from '../../components/uielements/tabs';
 import LayoutContentWrapper from '../../components/utility/layoutWrapper.js';
 import TableDemoStyle from './demo.style';
-import { tableinfos } from './configs';
+import { tableInfos } from './configs';
 import * as TableViews from './tableViews/';
 const { initData } = productAction;
 
@@ -36,7 +36,7 @@ class Inventory extends Component {
             <LayoutContentWrapper>
                 <TableDemoStyle className="nnLayoutContent">
                     <Tabs className="nnTableDisplayTab">
-                        {tableinfos.map(tableInfo => (
+                        {tableInfos.map(tableInfo => (
                         <TabPane tab={tableInfo.title} key={tableInfo.value}>
                             {this.renderTable(tableInfo, products)}
                         </TabPane>

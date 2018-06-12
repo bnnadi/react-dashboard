@@ -123,7 +123,7 @@ const smallColumns = [columns[1], columns[2], columns[3], columns[4]];
 //     columns: clone(columns)
 //   }
 // ];
-const tableinfos = [
+const tableInfos = [
   {
     title: 'Yana',
     value: 'yana',
@@ -135,4 +135,4 @@ const tableinfos = [
     columns: clone(smallColumns)
   },
 ];
-export { columns, tableinfos };
+export { columns, tableInfos };

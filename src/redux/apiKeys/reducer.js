@@ -4,8 +4,10 @@ import apiKeyActions from './actions';
 
 const initState = new Map({
     loadingInitData: false,
+    count: 0,
     view: 'listView',
-    api_keys: []
+    api_keys: [],
+    seectedId: null,
 });
 export default (state = initState, action) => {
     switch (action.type) {
@@ -16,8 +18,8 @@ export default (state = initState, action) => {
                 .set('loadingInitData', true);
         case apiKeyActions.CHANGE_VIEW:
             return state.set('view', action.view);
-        case apiKeyActions.UPDATE_DATA:
-            return state.set('api_keys', clone(action.api_keys));
+        case apiKeyActions.CREATE_KEY:
+            return state.set('api_keys', action.payload.api_keys);
         default:
             return state;
     }

@@ -50,7 +50,7 @@ function generateBarcode(id) {
             'x-access-token': getToken().get('token')
           },
     };
-    return fetch(apiUrl+'product/'+id+'/generateBarcode', requestOptions).then(response => response.json())
+    return fetch(apiUrl+`product/${id}/generateBarcode`, requestOptions).then(response => response.json())
 };
 
 function del(id) {
@@ -61,5 +61,5 @@ function del(id) {
             'x-access-token': getToken().get('token')
           },
     };
-    return fetch(apiUrl+'product/'+id+'.json', requestOptions).then(response => response.json())
+    return fetch(apiUrl+`product/${id}.json`, requestOptions).then(response => response.json())
 };

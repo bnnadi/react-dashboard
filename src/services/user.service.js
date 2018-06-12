@@ -2,8 +2,8 @@ import { apiUrl } from '../settings';
 import { getToken } from '../helpers/utility';
 
 export {
+    authenticate,
     get,
-    getAll,
     addEmployee,
     updateEmployee,
     addAddress,
@@ -15,6 +15,17 @@ export {
     deleteEmployee
 }
 
+function authenticate() {
+    const requestOptions = {
+        method: 'GET',
+        headers: {
+            'content-type': 'application/json',
+            'x-access-token': getToken().get('token')
+          },
+    };
+    return fetch(apiUrl+'user/authenticate', requestOptions).then(response => response.json())
+};
+
 function get(id) {
     const requestOptions = {
         method: 'GET',
@@ -23,27 +34,15 @@ function get(id) {
             'x-access-token': getToken().get('token')
           },
     };
-    return fetch(apiUrl+'employee.json', requestOptions).then(response => response.json())
+    return fetch(apiUrl+'user.json', requestOptions).then(response => response.json())
 };
-
-function getAll() {
-    const requestOptions = {
-        method: 'GET',
-        headers: {
-            'content-type': 'application/json',
-            'x-access-token': getToken().get('token')
-          },
-    };
-    return fetch(apiUrl+'employees.json', requestOptions).then(response => response.json())
-};
-
 
 function addEmployee() {
     const requestOptions = {
       method: 'POST',
       headers: { 'x-access-token': getToken().get('token'), 'Content-Type': 'application/json' }
     };
-    return fetch(apiUrl + 'employee.json', requestOptions).then(response => response.json())
+    return fetch(apiUrl + 'user.json', requestOptions).then(response => response.json())
   };
 
   function updateEmployee() {
@@ -51,7 +50,7 @@ function addEmployee() {
       method: 'PUT',
       headers: { 'x-access-token': getToken().get('token'), 'Content-Type': 'application/json' }
     };
-    return fetch(apiUrl + 'employee.json', requestOptions).then(response => response.json())
+    return fetch(apiUrl + 'user.json', requestOptions).then(response => response.json())
   };
 
   function addPhone(id) {
@@ -59,7 +58,7 @@ function addEmployee() {
       method: 'POST',
       headers: { 'x-access-token': getToken().get('token'), 'Content-Type': 'application/json' }
     };
-    return fetch(apiUrl + `employee/${id}/addAddress.json`, requestOptions).then(response => response.json())
+    return fetch(apiUrl + `user/${id}/addAddress.json`, requestOptions).then(response => response.json())
   };
 
   function addAddress(id) {
@@ -67,7 +66,7 @@ function addEmployee() {
       method: 'POST',
       headers: { 'x-access-token': getToken().get('token'), 'Content-Type': 'application/json' }
     };
-    return fetch(apiUrl + `employee/${id}/addAddress.json`, requestOptions).then(response => response.json())
+    return fetch(apiUrl + `user/${id}/addAddress.json`, requestOptions).then(response => response.json())
   };
 
   function updatePhone(id) {
@@ -75,7 +74,7 @@ function addEmployee() {
       method: 'PUT',
       headers: { 'x-access-token': getToken().get('token'), 'Content-Type': 'application/json' }
     };
-    return fetch(apiUrl + `employee/${id}/updateAddress.json`, requestOptions).then(response => response.json())
+    return fetch(apiUrl + `user/${id}/updateAddress.json`, requestOptions).then(response => response.json())
   };
 
   function updateAddress(id) {
@@ -83,7 +82,7 @@ function addEmployee() {
       method: 'PUT',
       headers: { 'x-access-token': getToken().get('token'), 'Content-Type': 'application/json' }
     };
-    return fetch(apiUrl + `employee/${id}/updateAddress.json`, requestOptions).then(response => response.json())
+    return fetch(apiUrl + `user/${id}/updateAddress.json`, requestOptions).then(response => response.json())
   };
 
   function removePhone(id) {
@@ -91,7 +90,7 @@ function addEmployee() {
       method: 'PUT',
       headers: { 'x-access-token': getToken().get('token'), 'Content-Type': 'application/json' }
     };
-    return fetch(apiUrl + `employee/${id}/removeAddress.json`, requestOptions).then(response => response.json())
+    return fetch(apiUrl + `user/${id}/removeAddress.json`, requestOptions).then(response => response.json())
   };
 
   function removeAddress(id) {
@@ -99,7 +98,7 @@ function addEmployee() {
       method: 'PUT',
       headers: { 'x-access-token': getToken().get('token'), 'Content-Type': 'application/json' }
     };
-    return fetch(apiUrl + `employee/${id}/removeAddress.json`, requestOptions).then(response => response.json())
+    return fetch(apiUrl + `user/${id}/removeAddress.json`, requestOptions).then(response => response.json())
   };
 
   function deleteEmployee(id) {
@@ -107,5 +106,5 @@ function addEmployee() {
       method: 'DELETE',
       headers: getToken()
     };
-    return fetch(apiUrl + `employee/${id}.json`, requestOptions).then(response => response.json())
+    return fetch(apiUrl + `user/${id}.json`, requestOptions).then(response => response.json())
   };

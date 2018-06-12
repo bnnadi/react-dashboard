@@ -22,7 +22,12 @@ const options = [
     {
         key: "timesheets",
         label: "sidebar.timesheets",
-        leftIcon: "ion-list-box"
+        leftIcon: "ion-clock"
+    },
+    {
+        key: "api-keys",
+        label: "sidebar.apiKey",
+        leftIcon: "ion-key"
     },
 ];
 export default options;

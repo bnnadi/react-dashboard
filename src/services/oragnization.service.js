@@ -41,7 +41,7 @@ function getUnit(id) {
             'x-access-token': getToken().get('token')
           },
     };
-    return fetch(apiUrl+'organization/'+id+'/unit.json', requestOptions).then(response => response.json())
+    return fetch(apiUrl+`organization/${id}/unit.json`, requestOptions).then(response => response.json())
 };
 
 function getAllUnits(id) {
@@ -52,7 +52,7 @@ function getAllUnits(id) {
             'x-access-token': getToken().get('token')
           },
     };
-    return fetch(apiUrl+'organization/'+id+'/units.json', requestOptions).then(response => response.json())
+    return fetch(apiUrl+`organization/${id}/units.json`, requestOptions).then(response => response.json())
 };
 
 function addUnit(id) {
@@ -63,7 +63,7 @@ function addUnit(id) {
             'x-access-token': getToken().get('token')
           },
     };
-    return fetch(apiUrl+'organization/'+id+'/addUnit.json.json', requestOptions).then(response => response.json())
+    return fetch(apiUrl+`organization/${id}/addUnit.json.json`, requestOptions).then(response => response.json())
 };
 
 function updateUnit(id) {
@@ -74,7 +74,7 @@ function updateUnit(id) {
             'x-access-token': getToken().get('token')
           },
     };
-    return fetch(apiUrl+'organization/'+id+'/updateUnit.json', requestOptions).then(response => response.json())
+    return fetch(apiUrl+`organization/${id}/updateUnit.json`, requestOptions).then(response => response.json())
 };
 
 function removeUnit(id) {
@@ -85,5 +85,5 @@ function removeUnit(id) {
             'x-access-token': getToken().get('token')
           },
     };
-    return fetch(apiUrl+'organization/'+id+'/removeUnit.json', requestOptions).then(response => response.json())
+    return fetch(apiUrl+`organization/${id}/removeUnit.json`, requestOptions).then(response => response.json())
 };

@@ -31,6 +31,10 @@ const routes = [
         path: "timesheets",
         component: asyncComponent(() => import("../Timesheet"))
     },
+    {
+        path: "api-keys",
+        component: asyncComponent(() => import("../ApiKey"))
+    },
 ];
 
 class DashboardRouter extends Component {

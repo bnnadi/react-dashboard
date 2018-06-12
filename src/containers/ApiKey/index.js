@@ -8,7 +8,8 @@ import HelperText from "../../components/utility/helper-text";
 import IntlMessages from "../../components/utility/intlMessages";
 import Scrollbars from "../../components/utility/customScrollBar";
 import Button from "../../components/uielements/button";
-import timesheetActions from "../../redux/timesheets/actions";
+import apiKeyActions from "../../redux/apiKeys/actions";
+import CardWrapper from "./apiKey.style";
 import TableWrapper from "../Inventory/antTable.style";
 
 class ApiKeys extends Component {
@@ -18,15 +19,15 @@ class ApiKeys extends Component {
     columns = [
         {
             title: "Api Key",
-            dataIndex: "apiKey",
-            rowKey: "apiKey",
+            dataIndex: "key",
+            rowKey: "key",
             width: "55%",
             render: text => <span>{text}</span>
           },
           {
             title: "Expiration Date",
-            dataIndex: "expirationDate",
-            rowKey: "expirationDate",
+            dataIndex: "ttl",
+            rowKey: "ttl",
             width: "35%",
             render: text => <span>{text}</span>
           },
@@ -38,24 +39,58 @@ class ApiKeys extends Component {
         }
     }
     render() {
+        const { match, api_keys } = this.props;
+        const { selected } = this.state;
+        const rowSelection = {
+          hideDefaultSelections: true,
+          selectedRowKeys: selected,
+          onChange: selected => this.setState({ selected }),
+          selections: [
+            {
+              key: "all-data",
+              text: "Select All Api Keys",
+              onSelect: () =>
+                this.setState({
+                  selected: this.props.timesheets.map(timesheet => timesheet.key)
+                })
+            },
+            {
+              key: "no-data",
+              text: "Unselect all",
+              onSelect: () => this.setState({ selected: [] })
+            },
+            {
+              key: "delete-selected",
+              text: "Delete selected",
+              onSelect: changableRowKeys => {
+                if (selected.length > 0) {
+                //   deleteInvoice(selected);
+                  this.setState({ selected: [] });
+                  notification("error", `${selected.length} api keys deleted`);
+                }
+              }
+            }
+          ],
+          onSelection: selected => this.setState({ selected })
+        };
         return (
             <LayoutWrapper>
                 <PageHeader>
-                <IntlMessages id="sidebar.timesheets" />
+                <IntlMessages id="sidebar.apiKey" />
                 </PageHeader>
                 <Box>
                 <CardWrapper title="Api Keys">
                 {api_keys.length === 0 ? (
                     <HelperText text="No Api Keys" />
                     ) : (
-                    <div className="nnTimesheetTable">
+                    <div className="nnApiKeyTable">
                         <Scrollbars style={{ width: "100%" }}>
                         <TableWrapper
                             rowSelection={rowSelection}
                             dataSource={api_keys}
                             columns={this.columns}
                             pagination={false}
-                            className="timesheetListTable"
+                            className="apiKeyListTable"
                         />
                         </Scrollbars>
                     </div>
@@ -72,4 +107,4 @@ function mapStateToProps(state) {
       ...state.ApiKeys.toJS()
     };
   }
-  export default connect(mapStateToProps, timesheetActions)(ApiKeys);
+  export default connect(mapStateToProps, apiKeyActions)(ApiKeys);
