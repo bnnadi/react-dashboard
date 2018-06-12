@@ -8,6 +8,7 @@ export {
 };
 
 function create(ttl) {
+    console.log(ttl);
     const requestOptions = {
         method: 'POST',
         headers: {

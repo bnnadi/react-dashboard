@@ -1,5 +1,4 @@
 import { Map } from 'immutable';
-import clone from 'clone';
 import apiKeyActions from './actions';
 
 const initState = new Map({
@@ -18,8 +17,6 @@ export default (state = initState, action) => {
                 .set('loadingInitData', true);
         case apiKeyActions.CHANGE_VIEW:
             return state.set('view', action.view);
-        case apiKeyActions.CREATE_KEY:
-            return state.set('api_keys', action.payload.api_keys);
         default:
             return state;
     }

@@ -63,6 +63,7 @@ export class Dashboard extends Component {
                             }}
                             >
                             <DashboardRouter url={url} />
+
                             </Content>
                             <Footer
                             style={{

@@ -29,6 +29,17 @@ export function getUser() {
     }
 }
 
+export function formatDate(str) {
+    var monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November","December"
+    ]
+
+    var parts = str.match(/(\d+)/g);
+    var date = new Date(parts[0], parts[1]-1, parts[2])
+
+    return monthNames[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear()
+}
+
 export function timeDifference(givenTime) {
     givenTime = new Date(givenTime);
     const milliseconds = new Date().getTime() - givenTime.getTime();
@@ -87,7 +98,7 @@ export function stringToInt(value, defValue = 0) {
     return defValue;
 }
 
-export function stringToPosetiveInt(value, defValue = 0) {
+export function stringToPositiveInt(value, defValue = 0) {
     const val = stringToInt(value, defValue);
     return val > -1 ? val : defValue;
 }

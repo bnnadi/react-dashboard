@@ -85,7 +85,7 @@ class Timesheets extends Component {
         }
     }
     render() {
-        const { match, timesheets } = this.props;
+        const { timesheets } = this.props;
         const { selected } = this.state;
         const rowSelection = {
           hideDefaultSelections: true,

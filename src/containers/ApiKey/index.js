@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import LayoutWrapper from "../../components/utility/layoutWrapper";
 import PageHeader from "../../components/utility/pageHeader";
-import notification from "../../components/notification";
+import createNotification from '../../components/notification';
 import Box from "../../components/utility/box";
 import HelperText from "../../components/utility/helper-text";
 import IntlMessages from "../../components/utility/intlMessages";
@@ -11,10 +11,14 @@ import Button from "../../components/uielements/button";
 import apiKeyActions from "../../redux/apiKeys/actions";
 import CardWrapper from "./apiKey.style";
 import TableWrapper from "../Inventory/antTable.style";
+import { formatDate } from '../../helpers/utility';
+
+const { createKey } = apiKeyActions;
 
 class ApiKeys extends Component {
     state = {
-        selected: []
+        selected: [],
+        loading: false
     };
     columns = [
         {
@@ -29,18 +33,22 @@ class ApiKeys extends Component {
             dataIndex: "ttl",
             rowKey: "ttl",
             width: "35%",
-            render: text => <span>{text}</span>
+            render: text => <span>{formatDate(text)}</span>
           },
     ];
     componentDidMount() {
         const { loadingInitData, initData } = this.props;
         if (!loadingInitData) {
-          initData();
+          // initData();
         }
     }
+    handleClick (e) {
+      var ttl = new Date(new Date().setFullYear(new Date().getFullYear() + 1))
+      createKey(ttl);
+    }
     render() {
-        const { match, api_keys } = this.props;
-        const { selected } = this.state;
+        const { api_keys } = this.props;
+        const { loading, selected } = this.state;
         const rowSelection = {
           hideDefaultSelections: true,
           selectedRowKeys: selected,
@@ -51,7 +59,7 @@ class ApiKeys extends Component {
               text: "Select All Api Keys",
               onSelect: () =>
                 this.setState({
-                  selected: this.props.timesheets.map(timesheet => timesheet.key)
+                  selected: this.props.api_keys.map(api_key => api_key.key)
                 })
             },
             {
@@ -66,7 +74,7 @@ class ApiKeys extends Component {
                 if (selected.length > 0) {
                 //   deleteInvoice(selected);
                   this.setState({ selected: [] });
-                  notification("error", `${selected.length} api keys deleted`);
+                  createNotification("error", `${selected.length} api keys deleted`);
                 }
               }
             }
@@ -79,23 +87,24 @@ class ApiKeys extends Component {
                 <IntlMessages id="sidebar.apiKey" />
                 </PageHeader>
                 <Box>
-                <CardWrapper title="Api Keys">
-                {api_keys.length === 0 ? (
-                    <HelperText text="No Api Keys" />
-                    ) : (
-                    <div className="nnApiKeyTable">
-                        <Scrollbars style={{ width: "100%" }}>
-                        <TableWrapper
-                            rowSelection={rowSelection}
-                            dataSource={api_keys}
-                            columns={this.columns}
-                            pagination={false}
-                            className="apiKeyListTable"
-                        />
-                        </Scrollbars>
-                    </div>
-                    )}
-                </CardWrapper>
+                  <CardWrapper title="Api Keys">
+                  {api_keys.length === 0 ? (
+                      <HelperText text="No Api Keys" />
+                      ) : (
+                      <div className="nnApiKeyTable">
+                          <Scrollbars style={{ width: "100%" }}>
+                          <TableWrapper
+                              rowSelection={rowSelection}
+                              dataSource={api_keys}
+                              columns={this.columns}
+                              pagination={false}
+                              className="apiKeyListTable"
+                          />
+                          </Scrollbars>
+                      </div>
+                      )}
+                      <Button type='primary' loading={loading} onClick={this.handleClick} className='nnApiKeyTableBtn'>Generate key</Button>
+                  </CardWrapper>
                 </Box>
             </LayoutWrapper> 
         )

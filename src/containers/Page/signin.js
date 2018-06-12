@@ -3,11 +3,11 @@ import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Input from '../../components/uielements/input';
 import Button from '../../components/uielements/button';
-import authAction from '../../redux/auth/actions';
+import authActions from '../../redux/auth/actions';
 import IntlMessages from '../../components/utility/intlMessages';
 import SignInStyleWrapper from './signin.style';
 
-const { login } = authAction;
+const { login } = authActions;
 
 class SignIn extends Component {
   state = {

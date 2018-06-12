@@ -22,11 +22,16 @@ export function* initData() {
   }
 }
 
-export function* createKey() {
+export function* createKey(payload) {
   try {
+
+    console.log(payload)
+
     let response;
   
-    response = yield call(create);
+    response = yield call(create, payload.ttl);
+
+    console.log(response);
 
     yield put({
       type: apiKeyActions.INIT_DATA,
@@ -43,6 +48,6 @@ export function* createKey() {
 export default function*() {
   yield all([
     takeEvery(apiKeyActions.INIT_DATA_SAGA, initData),
-    takeEvery(apiKeyActions.INIT_DATA_SAGA, createKey),
+    takeEvery(apiKeyActions.CREATE_KEY, createKey),
   ]);
 }
