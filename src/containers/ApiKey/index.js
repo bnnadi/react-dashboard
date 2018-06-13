@@ -13,7 +13,7 @@ import CardWrapper from "./apiKey.style";
 import TableWrapper from "../Inventory/antTable.style";
 import { formatDate } from '../../helpers/utility';
 
-const { createKey } = apiKeyActions;
+const { createKey, deleteKey } = apiKeyActions;
 
 class ApiKeys extends Component {
     state = {
@@ -72,7 +72,7 @@ class ApiKeys extends Component {
               text: "Delete selected",
               onSelect: changableRowKeys => {
                 if (selected.length > 0) {
-                //   deleteInvoice(selected);
+                //   deleteKey(selected);
                   this.setState({ selected: [] });
                   notification("error", `${selected.length} api keys deleted`);
                 }
