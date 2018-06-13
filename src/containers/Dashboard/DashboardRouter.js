@@ -24,9 +24,21 @@ const routes = [
         component: asyncComponent(() => import("../Inventory"))
     },
     {
+        path: "invoice/new",
+        component: asyncComponent(() => import("../Invoice/singleInvoice"))
+    },
+    {
+        path: "invoices/:invoiceId",
+        component: asyncComponent(() => import("../Invoice/singleInvoice"))
+      },
+    {
         path: "invoices",
         component: asyncComponent(() => import("../Invoice"))
     },
+    // {
+    //     path: "timesheets/:timesheetId",
+    //     component: asyncComponent(() => import("../Timesheet/singleInvoice"))
+    // },
     {
         path: "timesheets",
         component: asyncComponent(() => import("../Timesheet"))

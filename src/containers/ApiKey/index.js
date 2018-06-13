@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import LayoutWrapper from "../../components/utility/layoutWrapper";
 import PageHeader from "../../components/utility/pageHeader";
-import createNotification from '../../components/notification';
+import notification from '../../components/notification';
 import Box from "../../components/utility/box";
 import HelperText from "../../components/utility/helper-text";
 import IntlMessages from "../../components/utility/intlMessages";
@@ -39,7 +39,7 @@ class ApiKeys extends Component {
     componentDidMount() {
         const { loadingInitData, initData } = this.props;
         if (!loadingInitData) {
-          // initData();
+          initData();
         }
     }
     handleClick (e) {
@@ -74,7 +74,7 @@ class ApiKeys extends Component {
                 if (selected.length > 0) {
                 //   deleteInvoice(selected);
                   this.setState({ selected: [] });
-                  createNotification("error", `${selected.length} api keys deleted`);
+                  notification("error", `${selected.length} api keys deleted`);
                 }
               }
             }

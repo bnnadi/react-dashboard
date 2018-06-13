@@ -10,7 +10,7 @@ import DatePicker from '../../components/uielements/datePicker';
 import Box from '../../components/utility/box';
 import LayoutWrapper from '../../components/utility/layoutWrapper.js';
 import InvoicePageWrapper from './singleInvoice.style';
-import { stringToPosetiveInt } from '../../helpers/utility';
+import { stringToPositiveInt } from '../../helpers/utility';
 import { orderStatusOptions } from './config';
 
 const updateValues = invoice => {
@@ -110,7 +110,14 @@ export default class extends Component {
               <div className="OrderInfo">
                 <div className="LeftSideContent">
                   <h3 className="Title">Invoice Info</h3>
-                  <Input
+                  {isNewInvoice ? (
+                    <Input
+                    placeholder="Number"
+                    disabled
+                    className="LeftSideContentInput"
+                  />
+                  ) : (
+                    <Input
                     placeholder="Number"
                     value={editableInvoice.number}
                     onChange={event => {
@@ -119,6 +126,8 @@ export default class extends Component {
                     }}
                     className="LeftSideContentInput"
                   />
+                  )}
+                 
                 </div>
                 <div className="RightSideContent">
                   <div className="RightSideStatus">
@@ -230,7 +239,7 @@ export default class extends Component {
                         value={editableInvoice.vatRate}
                         addonAfter="%"
                         onChange={event => {
-                          editableInvoice.vatRate = stringToPosetiveInt(
+                          editableInvoice.vatRate = stringToPositiveInt(
                             event.target.value,
                             editableInvoice.vatRate
                           );

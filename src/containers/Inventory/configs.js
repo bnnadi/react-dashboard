@@ -65,9 +65,39 @@ const columns = [
     key: 'date',
     width: 200,
     render: object => renderCell(object, 'DateCell', 'date')
+  },
+  {
+    title: <IntlMessages id="antTable.title.productName" />,
+    key: 'productName',
+    width: 200,
+    render: object => renderCell(object, 'TextCell', 'productName')
+  },
+  {
+    title: <IntlMessages id="antTable.title.productCode" />,
+    key: 'productCode',
+    width: 200,
+    render: object => renderCell(object, 'TextCell', 'productCode')
+  },
+  {
+    title: <IntlMessages id="antTable.title.qty" />,
+    key: 'qty',
+    width: 200,
+    render: object => renderCell(object, 'TextCell', 'qty')
+  },  
+  {
+    title: <IntlMessages id="antTable.title.description" />,
+    key: 'description',
+    width: 300,
+    render: object => renderCell(object, 'TextCell', 'description')
   }
 ];
 const smallColumns = [columns[1], columns[2], columns[3], columns[4]];
+const inventoryColumns = [
+  { ...columns[7], sorter: true }, 
+  { ...columns[8], sorter: false },
+  { ...columns[9], sorter: true },
+  { ...columns[10], sorter: false },
+]
 // const sortColumns = [
 //   { ...columns[1], sorter: true },
 //   { ...columns[2], sorter: true },
@@ -125,14 +155,19 @@ const smallColumns = [columns[1], columns[2], columns[3], columns[4]];
 // ];
 const tableInfos = [
   {
-    title: 'Yana',
-    value: 'yana',
-    columns: clone(smallColumns)
+    title: 'All',
+    value: 'all',
+    columns: clone(inventoryColumns)
   },
   {
     title: 'Willow',
     value: 'willow',
-    columns: clone(smallColumns)
+    columns: clone(inventoryColumns)
+  },
+  {
+    title: 'Yana',
+    value: 'yana',
+    columns: clone(inventoryColumns)
   },
 ];
 export { columns, tableInfos };

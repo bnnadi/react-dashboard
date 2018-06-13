@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import EditInvoice from './editInvoice';
 import ViewInvoice from './viewInvoice';
-import Loader from '../../components/utility/loader';
-import invoiceActions from '../../redux/invoice/actions';
+import invoiceActions from '../../redux/invoices/actions';
 
 class SingleInvoice extends Component {
   componentDidMount() {
     const { initialInvoices, initData } = this.props;
+    console.log(this.props)
     if (!initialInvoices) {
       initData();
     }
@@ -31,9 +31,7 @@ class SingleInvoice extends Component {
   render() {
     const { match, currentInvoice, enableEditView } = this.props;
     const redirectPath = match.url.replace(match.params.invoiceId, '');
-    if (currentInvoice.id !== match.params.invoiceId) {
-      return <Loader />;
-    } else if (enableEditView) {
+    if (currentInvoice.id !== match.params.invoiceId || enableEditView) {
       return <EditInvoice {...this.props} redirectPath={redirectPath} />;
     } else {
       return <ViewInvoice {...this.props} redirectPath={redirectPath} />;

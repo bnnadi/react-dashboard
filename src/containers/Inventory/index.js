@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import productAction from '../../redux/products/actions';
 import Tabs, { TabPane } from '../../components/uielements/tabs';
+import Button from "../../components/uielements/button";
 import LayoutContentWrapper from '../../components/utility/layoutWrapper.js';
 import TableDemoStyle from './demo.style';
 import { tableInfos } from './configs';
@@ -26,7 +27,7 @@ class Inventory extends Component {
             Component = TableViews.FilterView;
             break;
           default:
-            Component = TableViews.SimpleView;
+            Component = TableViews.FilterView;
         }
         return <Component tableInfo={tableInfo} dataList={products} />;
       }
@@ -35,6 +36,7 @@ class Inventory extends Component {
         return(
             <LayoutContentWrapper>
                 <TableDemoStyle className="nnLayoutContent">
+                    {/* If user doesn't have access then only show organization they are a part of */}
                     <Tabs className="nnTableDisplayTab">
                         {tableInfos.map(tableInfo => (
                         <TabPane tab={tableInfo.title} key={tableInfo.value}>

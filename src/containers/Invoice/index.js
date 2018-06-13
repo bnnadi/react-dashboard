@@ -84,7 +84,6 @@ class Invoices extends Component {
       )
     }
   ];
-  getnewInvoiceId = () => new Date().getTime();
   render() {
     const { match, invoices, deleteInvoice } = this.props;
     const { selected } = this.state;
@@ -143,7 +142,7 @@ class Invoices extends Component {
               </div>
             )}
             <div className="nnInvoiceTableBtn">
-              <Link to={`${match.path}/${this.getnewInvoiceId()}`}>
+              <Link to={`${match.path}/new`}>
                 <Button type="primary" className="mateAddInvoiceBtn">
                   Add Invoice
                 </Button>
